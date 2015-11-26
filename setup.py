@@ -5,4 +5,5 @@ setup(name="t3",
 	author="girish ramnani",
 	packages=find_packages(),
 	zip_safe=False,
+	install_requires=['pygments'],
 	license="MIT")
