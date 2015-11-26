@@ -18,5 +18,3 @@ def curses_down():
     stdscr.keypad(False)
     curses.echo()
 
-curses_up()
-
