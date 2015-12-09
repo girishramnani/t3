@@ -1,6 +1,6 @@
 from pygments import highlight
 from pygments.lexers import get_lexer_for_filename,get_lexer_by_name
-from pygments.formatters import Terminal256Formatter
+from pygments.formatters import TerminalFormatter
 from sys import exit
 
 
@@ -11,10 +11,14 @@ class Formatter(object):
 
 
     """
-    def __init__(self,file,language=None):
-        self.file = file
+    def __init__(self,file,language=None,direct=False):
+        self.language=language        
+        if direct:
+            self.content = file
+        else:
+            self.file = file
         # for the time being reading the whole file in buffer
-        self.read(file)
+            self.read(file)
 
     def read(self,file):
         try:
@@ -29,13 +33,13 @@ class Formatter(object):
 
         try:
             self.lexer = get_lexer_for_filename(self.file)
-        except ClassNotFound as e:
+        except Exception as e:
             if self.language !=None:
-                self.lexer = get_lexer_from_name(self.language)
+                self.lexer = get_lexer_by_name(self.language)
             else:
                 raise Exception("no suitable lexer found")
         
-        formatter = Terminal256Formatter()
+        formatter = TerminalFormatter()
 
         return highlight(self.content,self.lexer,formatter)
 
