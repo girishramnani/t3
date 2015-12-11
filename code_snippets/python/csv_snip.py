@@ -5,8 +5,8 @@ class DictWriter:
         self.restval = restval          # for writing short dicts
         if extrasaction.lower() not in ("raise", "ignore"):
             raise ValueError, \
-                  ("extrasaction (%s) must be 'raise' or 'ignore'" %
-                   extrasaction)
+                  ("extrasaction ({0!s}) must be 'raise' or 'ignore'".format(
+                   extrasaction))
         self.extrasaction = extrasaction
         self.writer = writer(f, dialect, *args, **kwds)
 
