@@ -36,7 +36,7 @@ class PlainFormatter(BaseFormatter):
 	
 	
 	def format(self):
-		super().format()
+		return super().format()
 
 
 class PygmentFormatter(BaseFormatter):

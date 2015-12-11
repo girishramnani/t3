@@ -5,9 +5,9 @@ import os
 class Formatter_Test(unittest.TestCase):
 	
 	def test_basic_formatting_itself(self):
-		formatter = PlainFormatter("formatter_test.py")
-		formatter.format()
-		self.assertEqual(True,True) # if it reaches here then there was no issue		
+		formatter = PlainFormatter("../code_snippets/python/csv_snip.py")
+		length = len(formatter.format())
+		self.assertEqual(length,1382) # if it reaches here then there was no issue		
 		
 		
 		
