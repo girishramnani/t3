@@ -1,10 +1,11 @@
-from t3.formatter import Formatter
+from t3.formatter import PlainFormatter
 import unittest
+import os
 
 class Formatter_Test(unittest.TestCase):
 	
 	def test_basic_formatting_itself(self):
-		formatter = Formatter("formatter_test.py")
+		formatter = PlainFormatter("formatter_test.py")
 		formatter.format()
 		self.assertEqual(True,True) # if it reaches here then there was no issue		
 		
@@ -15,5 +16,5 @@ class Formatter_Test(unittest.TestCase):
 		
 
 
-if __name__="__main__":
+if __name__=="__main__":
 	unittest.main()	

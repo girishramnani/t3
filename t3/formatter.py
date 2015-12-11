@@ -2,9 +2,8 @@ from pygments import highlight
 from pygments.lexers import get_lexer_for_filename,get_lexer_by_name
 from pygments.formatters import TerminalFormatter
 from sys import exit
-
-
-class Formatter(object):
+import abc
+class BaseFormatter(metaclass=abc.ABCMeta):
     """
 
     handles the formatting of the code displayed
@@ -18,19 +17,36 @@ class Formatter(object):
         else:
             self.file = file
         # for the time being reading the whole file in buffer
-            self.read(file)
 
-    def read(self,file):
+    def _read(self,file):
         try:
             with open(file,'r') as open_file:
-                self.content = open_file.read()
+                return open_file.read()
 
         except FileNotFoundError as e:
             print(e)
             exit(0)
     
+    @abc.abstractmethod
     def format(self):
+    	return self._read(self.file)
 
+
+class PlainFormatter(BaseFormatter):
+	
+	
+	def format(self):
+		super().format()
+
+
+class PygmentFormatter(BaseFormatter):
+    """
+
+    handles the formatting of the code displayed
+
+
+    """
+    def format(self):
         try:
             self.lexer = get_lexer_for_filename(self.file)
         except Exception as e:
@@ -41,6 +57,6 @@ class Formatter(object):
         
         formatter = TerminalFormatter()
 
-        return highlight(self.content,self.lexer,formatter)
+        return highlight(self._read(),self.lexer,formatter)
 
     

@@ -1,11 +1,11 @@
 import unittest
-from t3.screen import Location
+from t3.screen import WrappingPoint
 
 class Location_test(unittest.TestCase):
 	
 	
 	def setUp(self):
-		self.loc = Location((20,20))
+		self.loc = WrappingPoint((20,20))
 		
 	
 	def test_for_simple(self):
