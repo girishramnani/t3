@@ -1,6 +1,5 @@
 # t3
 
-[![Build Status](https://travis-ci.com/girishramnani/t3.svg?token=CpHjQGbZocxLxDUaAbJd&branch=master)](https://travis-ci.com/girishramnani/t3)
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/0675187ee8d64b53a51b208c315fcf0c/badge.svg)](https://www.quantifiedcode.com/app/project/0675187ee8d64b53a51b208c315fcf0c)
 
 <hr>
