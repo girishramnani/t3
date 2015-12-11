@@ -13,6 +13,10 @@ before_install:
 script:
   - cd tests/
   - nosetests
+  - coverage
+
+after_success:
+  - codecov
 
 
 
