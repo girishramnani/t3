@@ -13,7 +13,8 @@ before_install:
 script:
   - cd tests/
   - nosetests
-  - coverage
+  - coverage run formatter_test.py
+  - coverage run location_test.py
 
 after_success:
   - codecov
