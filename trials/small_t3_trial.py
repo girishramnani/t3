@@ -6,6 +6,7 @@ from t3.formatter import PlainFormatter
 
 def main(stdscr):
     curses.init_pair(1,curses.COLOR_RED,curses.COLOR_BLACK)
+    curses.init_pair(2,curses.COLOR_GREEN,curses.COLOR_BLACK)
     curses.cbreak()
     curses.start_color()
     stdscr.clear()
@@ -22,18 +23,14 @@ def main(stdscr):
         if current == 'q':
             break
         else:
-            print(stdscr.instr(1))
-            stdscr.addstr(current,curses.color_pair(1))
+            on_screen_char = stdscr.instr(1).decode()
+            cp = 2 if on_screen_char == current else 1
+            stdscr.addstr(on_screen_char,curses.color_pair(cp))
 
             location.x +=1
             if location.old.x==location.size.x-1 and location.x==0:
-            	location.y+=1
+                location.y+=1
             stdscr.move(location.y,location.x)
-
-
-
-
-
 
         stdscr.refresh()
 

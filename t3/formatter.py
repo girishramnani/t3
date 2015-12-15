@@ -29,7 +29,10 @@ class BaseFormatter(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def format(self):
-    	return self._read(self.file)
+    	try:
+    		return self.content
+    	except:
+    		return self._read(self.file)
 
 
 class PlainFormatter(BaseFormatter):
