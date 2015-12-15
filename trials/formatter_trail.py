@@ -1,11 +1,11 @@
 from curses import wrapper
 import curses
 from t3.screen import WrappingPoint
-from t3.formatter import Formatter
+from t3.formatter import PlainFormatter
 
 
 def main(stdscr):
-    curses.init_pair(1,curses.COLOR_RED,curses.COLOR_WHITE)
+    curses.init_pair(1,curses.COLOR_RED,curses.COLOR_BLACK)
     curses.cbreak()
     curses.start_color()
     stdscr.clear()
@@ -13,7 +13,7 @@ def main(stdscr):
     stdscr.refresh()
     y,x= stdscr.getyx()
     location  = WrappingPoint(stdscr.getmaxyx(),x=x,y=y)
-    formatter = Formatter("import this",direct=True,language="python")
+    formatter = PlainFormatter("import this",direct=True,language="python")
     stdscr.addstr(formatter.format())
     stdscr.move(0,0)
 
@@ -28,7 +28,7 @@ def main(stdscr):
             stdscr.move(location.y,location.x)
             stdscr.addstr(current,curses.color_pair(1))
 
-            
+
 
         stdscr.refresh()
 

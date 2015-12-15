@@ -11,7 +11,7 @@ class BaseFormatter(metaclass=abc.ABCMeta):
 
     """
     def __init__(self,file,language=None,direct=False):
-        self.language=language        
+        self.language=language
         if direct:
             self.content = file
         else:
@@ -26,15 +26,15 @@ class BaseFormatter(metaclass=abc.ABCMeta):
         except FileNotFoundError as e:
             print(e)
             exit(0)
-    
+
     @abc.abstractmethod
     def format(self):
     	return self._read(self.file)
 
 
 class PlainFormatter(BaseFormatter):
-	
-	
+
+
 	def format(self):
 		return super().format()
 
@@ -54,9 +54,13 @@ class PygmentFormatter(BaseFormatter):
                 self.lexer = get_lexer_by_name(self.language)
             else:
                 raise Exception("no suitable lexer found")
-        
+
         formatter = TerminalFormatter()
 
         return highlight(self._read(),self.lexer,formatter)
 
+
+def initialize_color_pairs():
+    curses.init_pair(1,curses.COLOR_RED,curses.COLOR_BLACK)
+    curses.init_pair(2,curses.COLOR_GREEN,curses.COLOR_BLACK)
     

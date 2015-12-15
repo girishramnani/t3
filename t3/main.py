@@ -1,20 +1,37 @@
-import curses
-stdscr = curses.initscr()
+from screen import Screen
+from curses import wrapper
+from util import parse_args
 
-def curses_up():
-    """
-    all the initallization of the curses here
 
-    """
-    curses.noecho()
-    curses.cbreak()
-    stdscr.keypad(True)
 
-def curses_down():
-    """
-    function to get everything back to normal
-    """
-    curses.nocbreak()
-    stdscr.keypad(False)
-    curses.echo()
+def init_screen():
+    pass
 
+
+def main(stdscr):
+    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    args = parse_args()
